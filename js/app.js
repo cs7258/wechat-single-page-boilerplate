@@ -156,15 +156,17 @@ var app = app || {
 	},
 	restoreU:function() {
 		if(this.type == 1) {
+			var ty = this.h;
 			this.nexView.css({
-				"-webkit-transform":"translate3d(0px,100%,0px)"
+				"-webkit-transform":"translate3d(0px,"+ty+"px,0px)"
 			});
 			this.curView.css({
 				"-webkit-transform":"scale(1)"
 			});
 		} else {
+			var ty = this.h;
 			this.nexView.css({
-				"-webkit-transform":"translate3d(0px,100%,0px)"
+				"-webkit-transform":"translate3d(0px,"+ty+"px,0px)"
 			});
 			this.curView.css({
 				"-webkit-transform":"translate3d(0px,0px,0px)"
@@ -180,8 +182,9 @@ var app = app || {
 				"-webkit-transform":"translate3d(0px,0px,0px)"
 			});
 		} else {
+			var ty = -this.h;
 			this.preView.css({
-				"-webkit-transform":"translate3d(0px,-100%,0px)"
+				"-webkit-transform":"translate3d(0px,"+this.ty+"px,0px)"
 			});
 			this.curView.css({
 				"-webkit-transform":"translate3d(0px,0px,0px)"
@@ -248,6 +251,7 @@ var app = app || {
 		this.curView.empty().append(this.curPage);
 		this.nexView.empty().append(this.nexPage);
 		this.preView.empty().append(this.prePage);
+		
 		if(this.type == 1) {
 			this.preView.css({
 				"-webkit-transform":"translate3d(0px,0px,0px) scale(0.8)",
@@ -297,5 +301,5 @@ var app = app || {
 };
 
 $(function() {
-	app.init({type:1});
+	app.init({type:2});
 });
