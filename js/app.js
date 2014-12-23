@@ -28,6 +28,7 @@ var app = app || {
 	onLoad:function() {
 		$("#loader").remove();
 		$(".arrow").show();
+		$("#sound").show();
 		this.initView();
 		this.initListener();
 		this.reset();
