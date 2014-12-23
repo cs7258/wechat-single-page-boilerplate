@@ -6,6 +6,7 @@ var app = app || {
 		this.page = 1;
 		this.index = 1;
 		this.dir = 1;
+		this.touch = false;
 		this.tweening = false;
 		var template = $("#template").html();
 		this.pages = $(template).filter(".page");
@@ -59,9 +60,11 @@ var app = app || {
 	onBegan:function(e) {
 		if(this.tweening) return;
 		this.sy = this.canTouch ? e.changedTouches[0].pageY : e.pageY;
+		this.touch = true;
 	},
 	onMoved:function(e) {
 		e.preventDefault();
+		if(!this.touch) return;
 		if(this.tweening) return;
 		this.my = this.canTouch ? e.changedTouches[0].pageY : e.pageY;
 		this.dy = this.my - this.sy;
@@ -104,12 +107,14 @@ var app = app || {
 		this.page = this.page < 1 ? this.total : this.page;
 		this.index = this.index > 3 ? 1 : this.index;
 		this.index = this.index < 1 ? 3 : this.index;
+		this.touch = false;
 		
 	},
 	moveU:function() {
 		if(this.type == 1) {
 			var ty = parseInt(this.h + this.dy);
 			var ts = (1-this.ay/this.h*0.1);
+			console.log(this.curView);
 			this.nexView.css({
 				"-webkit-transform":"translate3d(0px,"+ty+"px,0px)"
 			});
