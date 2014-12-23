@@ -301,5 +301,5 @@ var app = app || {
 };
 
 $(function() {
-	app.init({type:2});
+	app.init({type:1});
 });
