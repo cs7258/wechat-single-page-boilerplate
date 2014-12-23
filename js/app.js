@@ -1,3 +1,4 @@
+/*-- author david website http://www.imokya.com --*/
 var app = app || {
 	init:function(opts) {
 		$.extend(this, opts);
