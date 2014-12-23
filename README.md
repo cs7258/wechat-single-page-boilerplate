@@ -8,7 +8,7 @@ a boilderplate for creating single page transitions in wechat or other mobile br
 ------
 1.为移动浏览器做了简单的优化,无论应用里有多少页DOM里始终只有3页来做切换.<br />
 2.用css3 transition3d来做过渡.<br />
-3.支持循环和跳任意页.
+3.支持循环,锁页,跳任意页.
 
 试用方法:
 ------
