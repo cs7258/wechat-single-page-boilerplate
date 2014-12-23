@@ -213,8 +213,9 @@ var app = app || {
 			this.preView.css({
 				"-webkit-transform":"scale(1)"
 			});
+			var ty = this.h;
 			this.curView.css({
-				"-webkit-transform":"translate3d(0px,100%,0px)"
+				"-webkit-transform":"translate3d(0px,"+ty+"px,0px)"
 			});
 		} else {
 			var ty = this.h;
