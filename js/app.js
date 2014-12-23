@@ -82,12 +82,14 @@ var app = app || {
 	},
 	onEnded:function(e) {
 		if(this.tweening) return;
-		this.views.addClass("trans");
 		this.ey = this.canTouch ? e.changedTouches[0].pageY : e.pageY;
 		var ay = Math.abs(this.ey - this.sy);
 		var ty,ts;
 		var lockU = $(this.curPage).hasClass("lockUp");
 		var lockD = $(this.curPage).hasClass("lockDown");
+		this.touch = false;
+		if(ay < 5) return;
+		this.views.addClass("trans");
 		if(this.dir == 1) {
 			if(ay < this.threshhold) {
 				 this.restoreU();
@@ -107,14 +109,12 @@ var app = app || {
 		this.page = this.page < 1 ? this.total : this.page;
 		this.index = this.index > 3 ? 1 : this.index;
 		this.index = this.index < 1 ? 3 : this.index;
-		this.touch = false;
 		
 	},
 	moveU:function() {
 		if(this.type == 1) {
 			var ty = parseInt(this.h + this.dy);
 			var ts = (1-this.ay/this.h*0.1);
-			console.log(this.curView);
 			this.nexView.css({
 				"-webkit-transform":"translate3d(0px,"+ty+"px,0px)"
 			});
