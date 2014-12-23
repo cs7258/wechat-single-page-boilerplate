@@ -10,7 +10,7 @@ a boilderplate for creating single page transitions in wechat or other mobile br
 2.用css3 transition3d来做过渡.<br />
 3.支持循环,锁页,跳任意页.
 
-试用方法:
+使用方法:
 ------
 app.init({type:1}); 目前支持三种常见的过渡效果,可用参数1,2,3.
 
