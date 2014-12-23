@@ -1,7 +1,7 @@
 微信单页模版
 ======================
 
-a boilderplate for creating single page transitions in wechat or other mobile browsers.<br />
+a boilerplate for creating single page transitions in wechat or other mobile browsers.<br />
 一个简单模版用于创建微信或者移动单页过渡效果.
 
 特点:
