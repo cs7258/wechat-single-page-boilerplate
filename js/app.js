@@ -247,7 +247,6 @@ var app = app || {
 		var nexIndex = curIndex + 1 > 3 ? 1 : curIndex + 1;
 		var preIndex = curIndex - 1 < 1 ? 3 : curIndex - 1;
 		
-
 		this.curView = this.views.eq(0);
 		this.nexView = this.views.eq(1);
 		this.preView = this.views.eq(2);
