@@ -292,12 +292,21 @@ var app = app || {
 		var nex = page;
 		var nexPage = this.pages[nex-1];
 		this.nexView.empty().append(nexPage);
-		this.nexView.css({
-			"-webkit-transform":"translate3d(0px,0px,0px)"
-		});
-		this.curView.css({
-			"-webkit-transform":"scale(0.8)"
-		});
+		if(this.type == 1) {
+			this.nexView.css({
+				"-webkit-transform":"translate3d(0px,0px,0px)"
+			});
+			this.curView.css({
+				"-webkit-transform":"scale(0.8)"
+			});
+		} else {
+			this.nexView.css({
+				"-webkit-transform":"translate3d(0px,0px,0px)"
+			});
+			this.curView.css({
+				"-webkit-transform":"translate3d(0px,-100%,0px)"
+			});
+		}
 		this.page = page;
 		this.tweening = true;
 	}
