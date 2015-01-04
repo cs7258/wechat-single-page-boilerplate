@@ -1,6 +1,5 @@
 /*-- author david website http://www.imokya.com --*/
 var app = app || {
-	init:function(opts) {
 		$.extend(this, opts);
 		this.threshhold = 50;
 		this.page = 1;
@@ -73,6 +72,8 @@ var app = app || {
 		if(this.type != 3) {
 			var lockU = $(this.curPage).hasClass("lockUp");
 			var lockD = $(this.curPage).hasClass("lockDown");
+			var lock = $(this.curPage).hasClass("lock");
+			if(lock) return;
 			if(this.dir == 1) {
 				if(!lockU) this.moveU();
 			} else {
@@ -87,24 +88,25 @@ var app = app || {
 		var ty,ts;
 		var lockU = $(this.curPage).hasClass("lockUp");
 		var lockD = $(this.curPage).hasClass("lockDown");
+		var lock = $(this.curPage).hasClass("lock");
 		this.touch = false;
 		if(ay < 5) return;
 		this.views.addClass("trans");
 		if(this.dir == 1) {
 			if(ay < this.threshhold) {
-				 this.restoreU();
+				if(!lockU && !lock) this.restoreU();
 			} else {
-				if(!lockU) this.endU();
+				if(!lockU && !lock) this.endU();
 			}
 			
 		} else {
 			if(ay < this.threshhold) {
-				if(!lockD) this.restoreD();
+				if(!lockD && !lock) this.restoreD();
 			} else {
-				if(!lockD) this.endD();
+				if(!lockD && !lock) this.endD();
 			}
 		}
-		this.tweening = (lockU || lockD) ? false : true;
+		this.tweening = (lockU || lockD || lock) ? false : true;
 		this.page = this.page > this.total ? 1 : this.page;
 		this.page = this.page < 1 ? this.total : this.page;
 		this.index = this.index > 3 ? 1 : this.index;
@@ -244,14 +246,15 @@ var app = app || {
 		var nexIndex = curIndex + 1 > 3 ? 1 : curIndex + 1;
 		var preIndex = curIndex - 1 < 1 ? 3 : curIndex - 1;
 		
-		this.curView = this.views.eq(curIndex-1);
-		this.nexView = this.views.eq(nexIndex-1);
-		this.preView = this.views.eq(preIndex-1);
+
+		this.curView = this.views.eq(0);
+		this.nexView = this.views.eq(1);
+		this.preView = this.views.eq(2);
 		
 		this.curView.empty().append(this.curPage);
 		this.nexView.empty().append(this.nexPage);
 		this.preView.empty().append(this.prePage);
-		
+
 		if(this.type == 1) {
 			this.preView.css({
 				"-webkit-transform":"translate3d(0px,0px,0px) scale(0.8)",
