@@ -98,6 +98,7 @@ var app = app || {
 				if(!lockU && !lock) this.restoreU();
 			} else {
 				if(!lockU && !lock) this.endU();
+				this.tweening = !lockU && !lock;
 			}
 			
 		} else {
@@ -105,14 +106,14 @@ var app = app || {
 				if(!lockD && !lock) this.restoreD();
 			} else {
 				if(!lockD && !lock) this.endD();
+				this.tweening = !lockD && !lock;
 			}
+			
 		}
-		this.tweening = (lockU || lockD || lock) ? false : true;
 		this.page = this.page > this.total ? 1 : this.page;
 		this.page = this.page < 1 ? this.total : this.page;
 		this.index = this.index > 3 ? 1 : this.index;
 		this.index = this.index < 1 ? 3 : this.index;
-		
 	},
 	moveU:function() {
 		if(this.type == 1) {
